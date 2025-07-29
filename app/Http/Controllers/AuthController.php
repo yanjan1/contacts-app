@@ -15,16 +15,16 @@ class AuthController extends Controller
     }
 
 
-    public function singup(Request $req){
-
+    public function signup(Request $req){
+        return view('Auth.signup');
     }
 
-    public function singupSubmit(Request $req){
+    public function signupSubmit(Request $req){
 
     }
 
     public function resetPassword(Request $req){
-
+        return view('Auth.passwordreset');
     }
 
     public function resetPasswordSubmit(Request $req){
