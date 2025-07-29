@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Password Reset');
+@section('title', 'Password Reset')
 @section('content')
     <section class="container mt-5" style="max-width: 400px;">
         @if (session('error'))

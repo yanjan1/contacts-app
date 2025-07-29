@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Signup Page');
+@section('title', 'Signup Page')
 @section('content')
     <section class="container mt-5" style="max-width: 400px;">
         @if (session('error'))

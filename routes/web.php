@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MailController;
+
+Route::get('/mails', [MailController::class, 'index'])->name('mails.index');
+
 
 Route::get('/login', [AuthController::class, 'login'])->name('Auth.login');
 
