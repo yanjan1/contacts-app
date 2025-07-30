@@ -11,7 +11,6 @@
 
 <body>
     @include('partials.header')
-    @include('partials.user.navbar', ['username' => 'Steven Smith'])
     @yield('content')
     @include('partials.footer')
 </body>
