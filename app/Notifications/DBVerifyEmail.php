@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\SentMailType;
 use Illuminate\Notifications\Messages\MailMessage;
 
 use Illuminate\Auth\Notifications\VerifyEmail as BaseVerifyEmail;
@@ -20,6 +21,7 @@ class DBVerifyEmail extends BaseVerifyEmail
             'to'      => $notifiable->email,
             'subject' => $subject,
             'body'    => $body,
+            'type'    => SentMailType::Verification->value
         ]);
 
         return new MailMessage;

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('subject');
             $table->text('body');
             $table->timestamp('send_at')->nullable();
+            $table->enum('type', ['email_verification', 'password_reset', 'email_change'])->default('email_verification');
             $table->timestamps();
         });
     }
