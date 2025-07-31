@@ -9,10 +9,17 @@
             </div>
         @endif
 
-        <form class="my-4" action="{{ route('Auth.signup.submit') }}" method="POST">
+        <form class="my-4" action="{{ route('register.submit') }}" method="POST">
+            
             @csrf
-
+            
             <h2 class="mb-4 text-center">Signup</h2>
+            
+            @if (session('suncess') || session('error'))
+              <div class="my-3">
+                @include('partials.sucesserror')    
+            </div>
+            @endif
             
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
@@ -27,7 +34,7 @@
 
             <button type="submit" class="btn btn-primary w-100">Signup</button>
         </form>
-        <p>Forgot password? <a href="{{ route('Auth.resetpassword') }}"> Click here to reset</a> or already have an account ? <a
-                href="{{ route('Auth.login') }}"> sign in here</a></p>
+        <p>Forgot password? <a href="{{ route('password.request') }}"> Click here to reset</a> or already have an account ? <a
+                href="{{ route('login') }}"> sign in here</a></p>
     </section>
 @endsection

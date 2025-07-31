@@ -28,9 +28,8 @@ class DbResetPassword extends BaseReset
         ]);
        
 
-        // Return a dummy mail message so Laravel’s flow completes
         return (new MailMessage)
                     ->subject('Password Reset Sent')
-                    ->line('A password reset link has been “sent” (check your DB).');
+                    ->line('A password reset link has been "sent" (check your DB).');
     }
 }

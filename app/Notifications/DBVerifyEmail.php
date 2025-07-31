@@ -17,13 +17,20 @@ class DBVerifyEmail extends BaseVerifyEmail
         $subject = "Verify the mail";
         $body = "Click the link below to verify your email:\n\n{$verifyURL}";
 
-        SentMail::create([
-            'to'      => $notifiable->email,
-            'subject' => $subject,
-            'body'    => $body,
-            'type'    => SentMailType::Verification->value
-        ]);
+        try {
+            $mail = SentMail::create([
+                'to' => $notifiable->email,
+                'subject' => $subject,
+                'body' => $body,
+                'type' => SentMailType::Verification->value
+            ]);
 
-        return new MailMessage;
+        } catch (\Throwable $th) {
+            \Log::error("Failed to create verification email: " . $th->getMessage());
+        }
+
+         return (new MailMessage)
+            ->subject($subject)
+            ->line('A verification email has been logged (check your DB).');
     }
 }

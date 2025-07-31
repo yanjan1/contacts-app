@@ -9,7 +9,7 @@
             </div>
         @endif
 
-        <form class="my-4" action="{{ route('Auth.login.submit') }}" method="POST">
+        <form class="my-4" action="{{ route('login.submit') }}" method="POST">
             @csrf
 
             <h2 class="mb-4 text-center">Login</h2>
@@ -35,6 +35,6 @@
             <button type="submit" class="btn btn-primary w-100">Login</button>
         </form>
         <p>Forgot password? <a href="{{ route('Auth.resetpassword') }}"> Click here to reset</a> or Don't have an account yet ? <a
-                href="{{ route('Auth.signup') }}"> sign up here</a></p>
+                href="{{ route('register') }}"> sign up here</a></p>
     </section>
 @endsection
