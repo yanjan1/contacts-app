@@ -9,7 +9,7 @@
             </div>
         @endif
 
-        <form class="my-4" action="{{ route('Auth.resetpassword.submit') }}" method="POST">
+        <form class="my-4" action="{{ route('password.email') }}" method="POST">
             @csrf
 
             <h2 class="mb-4 text-center">Reset your password</h2>
@@ -22,6 +22,8 @@
 
             <button type="submit" class="btn btn-primary w-100">Request Password Reset Link</button>
         </form>
+
+         @include('partials.formlinks')
 
     </section>
 @endsection

@@ -3,11 +3,6 @@
 @section('title', 'Signup Page')
 @section('content')
     <section class="container mt-5" style="max-width: 400px;">
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
 
         <form class="my-4" action="{{ route('register.submit') }}" method="POST">
             
@@ -15,7 +10,7 @@
             
             <h2 class="mb-4 text-center">Signup</h2>
             
-            @if (session('suncess') || session('error'))
+            @if (session('success') || session('error'))
               <div class="my-3">
                 @include('partials.sucesserror')    
             </div>
@@ -34,7 +29,6 @@
 
             <button type="submit" class="btn btn-primary w-100">Signup</button>
         </form>
-        <p>Forgot password? <a href="{{ route('password.request') }}"> Click here to reset</a> or already have an account ? <a
-                href="{{ route('login') }}"> sign in here</a></p>
+        @include('partials.formlinks')
     </section>
 @endsection

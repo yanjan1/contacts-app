@@ -15,7 +15,17 @@ class DBVerifyEmail extends BaseVerifyEmail
     {
         $verifyURL = $this->verificationURL($notifiable);
         $subject = "Verify the mail";
-        $body = "Click the link below to verify your email:\n\n{$verifyURL}";
+        $body = <<<EOF
+        Dear {$notifiable->email},
+        We have recived a signup request for your email address. Please click the link below to verify your email address:
+        <a href="{$verifyURL}">Verify Email</a>
+        If you did not request this, please ignore this email.
+        Thank you!
+        Regards,
+        Contact App Team
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        
+        EOF;
 
         try {
             $mail = SentMail::create([
