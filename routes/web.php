@@ -37,8 +37,11 @@ Route::middleware('guest')->group(function () {
 
     Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-    // Email verification routes
+    
 
+    // !Todo : to be implemented
+
+    // Email verification routes
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware('signed');
 
     Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');

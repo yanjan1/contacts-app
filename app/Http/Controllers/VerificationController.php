@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Log;
 use URL;
 
 class VerificationController extends Controller
@@ -37,6 +38,24 @@ class VerificationController extends Controller
 
     public function resend(Request $request)
     {
-        // Logic for resending the verification email
+        $validation = $request->validate(['email' => 'required|email', 'exists:users,email']);
+        $user = User::where('email', $validation['email'])->first();
+
+        if (!$user || $user->hasVerifiedEmail()) {
+           return redirect()->back()->with('error', 'Something went wrong. Please try again.');
+        }else{
+           try {
+                $user->sendEmailVerificationNotification();
+                return redirect()->back()->with('success', 'Verification link sent to your email.');
+            } catch (\Exception $e) {
+                Log::error('Email verification resend failed: ' . $e->getMessage(), [
+                    'user_id' => $user->id,
+                    'email' => $user->email,
+                    'url' => URL::current(),
+                ]);
+                return redirect()->back()->with('success', 'Something went wrong.');
+            }
+        }
+
     }
 }
