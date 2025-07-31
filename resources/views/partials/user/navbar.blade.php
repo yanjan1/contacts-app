@@ -19,7 +19,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                        <li><a class="dropdown-item text-danger" href="{{ route('logout') }}">Logout</a></li>
                     </ul>
                 </li>
             </ul>

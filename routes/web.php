@@ -29,6 +29,8 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'register'])->name('register.submit')->middleware('throttle:5,1');
 
 
+    // Todo : Yet to implement
+
     Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 
     Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email')->name('password.email');
@@ -39,7 +41,7 @@ Route::middleware('guest')->group(function () {
 
     
 
-    // !Todo : to be implemented
+    // DONE: email stuff is done!
 
     // Email verification routes
     Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware('signed');
@@ -47,14 +49,17 @@ Route::middleware('guest')->group(function () {
     Route::get('/email/verify', [VerificationController::class, 'show'])->name('verification.notice');
 
     Route::post('/email/resend', [VerificationController::class, 'resend'])->
-        name('verification.resend');
+        name('verification.resend')->middleware('throttle:1,1');
 
 
 });
 
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::get('/logout', [LoginController::class, 'logoutshow'])->name('logout')->middleware('throttle:5,1');
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout.submit');
 
 
     Route::group(['prefix' => 'profile'], function () {
