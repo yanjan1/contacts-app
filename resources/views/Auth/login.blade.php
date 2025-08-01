@@ -3,11 +3,6 @@
 @section('title', 'Login Page')
 @section('content')
     <section class="container mt-5" style="max-width: 400px;">
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
 
         <form class="my-4" action="{{ route('login.submit') }}" method="POST">
             @csrf

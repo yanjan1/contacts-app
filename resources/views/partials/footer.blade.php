@@ -13,10 +13,10 @@
       <div class="col-md-4 mb-4">
         <h5 class="fw-bold">Quick Links</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-white text-decoration-none">Home</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Terms & Conditions</a></li>
-          <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
-          <li><a href="#" class="text-white text-decoration-none">About us</a></li>
+          <li><a href="{{ route('mails.index') }}" class="text-white text-decoration-none">Common Mail Box</a></li>
+          <li><a href="{{ route('login') }}" class="text-white text-decoration-none">Sign in</a></li>
+          <li><a href="{{ route('register') }}" class="text-white text-decoration-none">Sign up</a></li>
+          <li><a href="{{ route('password.request') }}" class="text-white text-decoration-none">Reset Password</a></li>
         </ul>
       </div>
 
@@ -36,7 +36,7 @@
     <hr class="border-secondary" />
 
     <div class="text-center text-white-50 small">
-      &copy; {{ date('Y') }} YourAppName. All rights reserved.
+      &copy; {{ date('Y') }} {{ config('app.name') }}. All rights reserved.
     </div>
   </div>
 </footer>

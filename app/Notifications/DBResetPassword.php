@@ -6,7 +6,6 @@ use App\Models\SentMailType;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Auth\Notifications\ResetPassword as BaseReset;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Log;
 use App\Models\SentMail;
 
