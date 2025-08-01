@@ -40,7 +40,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->notify(new DBVerifyEmail);
     }
 
-    public function sendPasswordResetNotification($token){
+    public function sendPasswordResetNotification($token): void{
         $this->notify(new DBResetPassword($token));
     }
 }

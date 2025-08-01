@@ -33,11 +33,11 @@ Route::middleware('guest')->group(function () {
 
     Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 
-    Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email')->name('password.email');
+    Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-    Route::get('/password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
+    Route::get('/password/reset/{token}/{payload}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 
-    Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+    Route::post('/password/reset', [ForgotPasswordController::class, 'reset'])->name('password.update');
 
     
 
